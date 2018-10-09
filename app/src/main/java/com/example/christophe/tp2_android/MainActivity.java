@@ -29,8 +29,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
      * de notre interface. Il suffit donc de créer un nouvel Intent pour démarrer
      * la seconde activité.
      */
-            Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-            intent.putExtra(SearchManager.QUERY,"iPhone XR" ); // query contains search string
+            Intent intent = new Intent(this, Activite2.class);
+            //intent.putExtra(SearchManager.QUERY,"iPhone XR" ); // query contains search string
             startActivity(intent);
         }
     }

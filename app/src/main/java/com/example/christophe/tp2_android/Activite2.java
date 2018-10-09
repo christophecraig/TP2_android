@@ -14,14 +14,13 @@ public class Activite2 extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2);
 
-        mButton = (Button)findViewById(R.id.button);
-        mButton.setOnClickListener(this);
+        //mButton = (Button) findViewById(R.id.button);
+        //mButton.setOnClickListener(this);
     }
 
     public void onClick(View view) {
         if (view == mButton) {
-            Intent intention = new Intent(this, Activite2.class);
-            startActivity(intention);
+
         }
     }
 
