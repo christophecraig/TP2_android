@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.app.SearchManager;
+import android.widget.EditText;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity {
 
-    private Button mButton;
+    Activity lecontext;
 
     /** Called when the activity is first created. */
     @Override
@@ -18,21 +19,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mButton = (Button) findViewById(R.id.button);
-        mButton.setOnClickListener(this);
-    }
-
-    public void onClick(View view) {
-        if(view == mButton){
-
-     /* Nous sommes maintenant sûr que la vue ayant été cliquée est le bouton
-     * de notre interface. Il suffit donc de créer un nouvel Intent pour démarrer
-     * la seconde activité.
-     */
-            Intent intent = new Intent(this, Activite2.class);
-            //intent.putExtra(SearchManager.QUERY,"iPhone XR" ); // query contains search string
-            startActivity(intent);
-        }
+        lecontext = this;
+        final EditText textchampsaisie = (EditText) findViewById(R.id.text);
+        Button btaction = (Button) findViewById(R.id.btecrire);
+        btaction.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+                Intent defineIntent = new Intent(lecontext, Activite2.class);
+                Bundle objetbundle = new Bundle();
+                objetbundle.putString("passInfo", textchampsaisie.getText().toString());
+                defineIntent.putExtras(objetbundle);
+                lecontext.startActivity(defineIntent);
+            }
+        });
     }
 }
 
